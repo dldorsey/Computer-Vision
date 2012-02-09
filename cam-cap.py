@@ -12,7 +12,7 @@ def thresholdImage(img):
     img_thresh = cv.CreateImage((img.width,img.height),8,1)#1 channel
 
     cv.CvtColor(img, img_hsv, cv.CV_BGR2HSV)    
-    cv.InRangeS(img_hsv, cv.Scalar(155, 50, 50), cv.Scalar(175, 255, 255), img_thresh)
+    cv.InRangeS(img_hsv, cv.Scalar(0, 50, 50), cv.Scalar(10, 255, 255), img_thresh)
     
     return(img_thresh)
     
@@ -32,9 +32,9 @@ if capture:
         break
     cv.ShowImage("TestOutRaw", frame)
     
-    #img = thresholdImage(frame)
-    img = erodeImage(frame)
-    img = thresholdImage(img)
+    img = thresholdImage(frame)
+    #img = erodeImage(frame)
+    #img = thresholdImage(img)
     cv.ShowImage("TestOutFiltered", img)
     
     if cv.WaitKey(1) >= 0:
